@@ -1,8 +1,6 @@
-# JoyoKanji
+# JoyoKanji [![Build Status](https://travis-ci.org/tsmsogn/joyo_kanji.svg?branch=master)](https://travis-ci.org/tsmsogn/joyo_kanji)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/joyo_kanji`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+JoyoKanji is utils for Japanese joyo kanji.
 
 ## Installation
 
@@ -22,14 +20,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Getting joyo kanji list
 
-## Development
+```ruby
+JoyoKanji.joyo_kanji_list
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Checking the string is joyo kanji
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+JoyoKanji.joyo_kanji?('a') #=> false
+JoyoKanji.joyo_kanji?('阿') #=> false
+JoyoKanji.joyo_kanji?('阿良々木') #=> false
+JoyoKanji.joyo_kanji?('忍') #=> true
+JoyoKanji.joyo_kanji?('忍野') #=> true
+```
+
+```ruby
+class MyString < String
+  include JoyoKanji
+end
+
+MyString.new('忍野').joyo_kanji? #=> true
+```
+
+```ruby
+'忍野'.extend(JoyoKanji).joyo_kanji? #=> true
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/joyo_kanji.
+Bug reports and pull requests are welcome on GitHub at https://github.com/tsmsogn/joyo_kanji.
