@@ -4,12 +4,12 @@ require "joyo_kanji/version"
 module JoyoKanji
   PATH_TO_CSV = File.expand_path('../../data/joyo_kanji.csv', __FILE__)
 
-  def self.joyo_kanji_list
+  def self.list
     @joyo_kanji ||= load_joyo_kanji
   end
 
   def self.joyo_kanji?(characters)
-    characters.split('').all? { |c| joyo_kanji_list.include?(c) }
+    characters.split('').all? { |c| list.include?(c) }
   end
 
   def self.load_joyo_kanji
