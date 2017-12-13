@@ -7,9 +7,9 @@ RSpec.describe JoyoKanji do
     expect(JoyoKanji::VERSION).not_to be nil
   end
 
-  describe '.list?' do
+  describe '::LIST' do
     it 'works' do
-      expect(JoyoKanji.list.count).to eq 2136
+      expect(JoyoKanji::LIST.count).to eq 2136
     end
   end
 
