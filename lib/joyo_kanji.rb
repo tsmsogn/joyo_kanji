@@ -13,10 +13,9 @@ module JoyoKanji
   end
 
   def self.load_joyo_kanji
-    @joyo_kanji =
-      CSV.read(PATH_TO_CSV).map do |row|
-        row[1]
-      end
+    CSV.read(PATH_TO_CSV).map do |row|
+      row[1]
+    end
   end
 
   module ClassMethods
